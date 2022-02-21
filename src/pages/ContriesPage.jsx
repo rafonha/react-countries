@@ -3,15 +3,34 @@ import Main from '../components/Main'
 import GenericInput from '../components/GenericInput'
 import { allCountries } from '../data/countries';
 import { useState } from 'react';
+import Countries from '../components/Countries';
 
 export default function ContriesPage() {
-  const [countryFilter, setcountryFilter] = useState("Brazil");
+  const [countryFilter, setcountryFilter] = useState('');
+  const [visitedCountries, setVisitedcountries] = useState([]);
 
   function handleCountryFilter(newCountryFilter) {
-    
-    console.log("newCountryFilter", newCountryFilter)
     setcountryFilter(newCountryFilter)
   }
+  
+  function toggleVisitedCountry(countryId) {
+    let newVisitedCountries = [...visitedCountries]
+
+    if (newVisitedCountries.indexOf(countryId) !== -1) {
+      newVisitedCountries = newVisitedCountries.filter(visitedCountryId => visitedCountryId !== countryId)
+    } else {
+      newVisitedCountries.push(countryId)
+    }
+
+    setVisitedcountries(newVisitedCountries);
+  }
+
+  const countryFilterLowerCase = countryFilter.trim().toLocaleLowerCase();
+
+  const filteredCountries = countryFilterLowerCase.length >= 3 
+    ? allCountries.filter(({ nameLowerCase }) => {
+      return nameLowerCase.includes(countryFilterLowerCase)
+    }) : allCountries
 
   return(
       <>
@@ -31,6 +50,12 @@ export default function ContriesPage() {
             autoFocus
             divClass=''
           />
+          <Countries 
+          onCountryClick={toggleVisitedCountry}
+          visitedCountries={visitedCountries}
+          >
+            {filteredCountries}
+          </Countries>
         </Main>
       </>
   );
