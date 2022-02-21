@@ -8,8 +8,8 @@ export default function Countries({
 
   
   return <>
-    <p>Quantidade de países: {countries.length}</p>
-    <p>Quantidade de países visitados: {visitedCountries.length}</p>
+    <p>Quantity of countries: {countries.length}</p>
+    <p>Quantity of visited countries: {visitedCountries.length}</p>
     {countries.map(country => {
       
       const isVisited = visitedCountries.indexOf(country.id) !== -1

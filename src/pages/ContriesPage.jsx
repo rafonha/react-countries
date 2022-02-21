@@ -40,7 +40,7 @@ export default function ContriesPage() {
         />
         <Main>
           <GenericInput
-            inputLabel = 'Nome do país (pelo menos 3 caracteres): ' 
+            inputLabel = 'Country name (at least 3 characters): ' 
             name='inputCountryName'
             type='text'
             id='inputCountryName' 

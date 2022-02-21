@@ -5,7 +5,7 @@ export default function Country({
 }) {
 
     if (!country) {
-        return <p>Não foi possível renderizar esse país</p>
+        return <p>Impossible to render countries</p>
     }
 
     function handleCountryClick() {
@@ -22,10 +22,10 @@ export default function Country({
       <div className={`border p-4 my-1 flex flex-row items-center space-x-2 cursor-pointer ${isVisitedClass}`} onClick={handleCountryClick}>
         {/* <img src={flag} alt={name} /> */}
         <ul>
-            <li><strong>Nome:</strong> {name}</li>
+            <li><strong>Name:</strong> {name}</li>
             <li><strong>Capital:</strong> {capital}</li>
-            <li><strong>Região:</strong> {region}</li>
-            <li><strong>População:</strong> {population}</li>
+            <li><strong>Region:</strong> {region}</li>
+            <li><strong>Population:</strong> {population}</li>
         </ul>
       </div>
     )
